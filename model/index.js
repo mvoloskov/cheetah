@@ -1,11 +1,12 @@
-
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 })
 
 const user = mongoose.model('user', {
-  id: String
+  id: String,
+  login: String,
+  password: String
 })
 
 const entry = mongoose.model('entry', {

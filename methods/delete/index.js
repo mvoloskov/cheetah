@@ -1,5 +1,5 @@
-const { entry, filter } = require('../model')
-const { ok, err } = require('../view/delete')
+const { entry, filter } = require('../../model')
+const { ok, err } = require('./view')
 
 module.exports = async (req, res) => {
   const id = req.body.id

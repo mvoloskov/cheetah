@@ -1,5 +1,5 @@
-const { entry } = require('../model')
-const { ok, err } = require('../view/create')
+const { entry } = require('../../model')
+const { ok, err } = require('./view')
 const nanoid = require('nanoid')
 
 module.exports = async (req, res) => {
