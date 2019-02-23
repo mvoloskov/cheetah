@@ -4,32 +4,25 @@
   "description": "Universal, performant NodeJS CRUD server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pm2 start index.js -i 0 --name cheetah",
+    "dev": "pm2 start index.js --name cheetah --watch",
+    "test": "standard",
+    "lint": "standard --fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uyouthe/cheetah.git"
   },
-  "keywords": [
-    "crud",
-    "express",
-    "rest",
-    "scalable",
-    "performance",
-    "api",
-    "backend"
-  ],
   "author": "Miloslav Voloskov",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/uyouthe/cheetah/issues"
-  },
-  "homepage": "https://github.com/uyouthe/cheetah#readme",
   "dependencies": {
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.14",
     "nanoid": "^2.0.1",
     "pm2": "^3.3.1"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
   }
 }
