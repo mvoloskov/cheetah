@@ -1,15 +1,15 @@
 require('dotenv').config()
 const app = require('express')()
 const bodyParser = require('body-parser')
-const methods = require('./methods')
-const middleware = require('./middleware')
+const methods = require('require-all')(__dirname + '/methods')
+const middleware = require('require-all')(__dirname + '/middleware')
 
 app.use(bodyParser.json())
 
 app.post('/', middleware.checkBody(['data']), methods.create)
 app.get('/', methods.read)
 app.put('/', middleware.checkBody(['id', 'data']), methods.update)
-app.delete('/', middleware.checkBody(['id']), methods.remove)
+app.delete('/', middleware.checkBody(['id']), methods.delete)
 
 app.post('/signup',
   middleware.checkBody(['login', 'password']),

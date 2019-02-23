@@ -1,4 +1,4 @@
-const { addEntry } = require('../model')
+const addEntry = require('../model/addEntry')
 const { ok, err } = require('../responses')
 
 module.exports = async (req, res) => {
@@ -10,6 +10,6 @@ module.exports = async (req, res) => {
     res.status(201).json(ok())
 
   } catch (e) {
-    res.status(500).json(err(e))
+    res.status(500).json(err('Internal server error'))
   }
 }
