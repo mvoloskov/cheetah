@@ -4,6 +4,7 @@
   "description": "Universal, performant NodeJS CRUD server",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm i -g pm2",
     "start": "pm2 start index.js -i 0 --name cheetah",
     "dev": "pm2 start index.js --name cheetah --watch",
     "test": "standard",
