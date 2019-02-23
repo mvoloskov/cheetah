@@ -9,6 +9,7 @@ const update = require('./methods/update')
 const remove = require('./methods/delete')
 
 const signup = require('./methods/signup')
+const signin = require('./methods/signin')
 
 app.use(bodyParser.json())
 
@@ -18,5 +19,6 @@ app.put('/', update)
 app.delete('/', remove)
 
 app.post('/signup', signup)
+app.post('/signin', signin)
 
 app.listen(process.env.PORT, () => console.log('Server is up on port ' + process.env.PORT))
