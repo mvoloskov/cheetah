@@ -1,6 +1,7 @@
 module.exports = {
-  ok: () => ({
-    ok: true
+  ok: data => ({
+    ok: true,
+    ...data
   }),
   err: err => ({
     ok: false,

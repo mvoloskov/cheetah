@@ -1,24 +1,28 @@
 require('dotenv').config()
-const express = require('express')
-const app = express()
+const app = require('express')()
 const bodyParser = require('body-parser')
-
-const create = require('./methods/create')
-const read = require('./methods/read')
-const update = require('./methods/update')
-const remove = require('./methods/delete')
-
-const signup = require('./methods/signup')
-const signin = require('./methods/signin')
+const methods = require('./methods')
+const middleware = require('./middleware')
 
 app.use(bodyParser.json())
 
-app.post('/', create)
-app.get('/', read)
-app.put('/', update)
-app.delete('/', remove)
+app.post('/', middleware.checkBody(['data']), methods.create)
+app.get('/', methods.read)
+app.put('/', middleware.checkBody(['id', 'data']), methods.update)
+app.delete('/', middleware.checkBody(['id']), methods.remove)
 
-app.post('/signup', signup)
-app.post('/signin', signin)
+app.post('/signup',
+  middleware.checkBody(['login', 'password']),
+  middleware.checkLogin,
+  methods.signup
+)
 
-app.listen(process.env.PORT, () => console.log('Server is up on port ' + process.env.PORT))
+app.post('/signin',
+  middleware.checkBody(['login', 'password']),
+  middleware.checkUser,
+  middleware.checkPassword,
+  methods.signin
+)
+
+const port = process.env.PORT
+app.listen(port, () => console.log('Server is up on port ' + port))
