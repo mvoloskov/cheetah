@@ -1,15 +1,14 @@
 const { entry, filter } = require('../model')
-const { ok, err } = require('../view/update')
+const { ok, err } = require('../view/delete')
 
 module.exports = async (req, res) => {
   const id = req.body.id
-  const data = req.body.data
 
-  if (id && data) {
+  if (id) {
 
     try {
 
-      await entry.findOneAndUpdate({ id }, { data }).exec()
+      await entry.findOneAndDelete({ id }).exec()
 
       res.status(200).json(ok())
 
@@ -20,7 +19,7 @@ module.exports = async (req, res) => {
     }
 
   } else {
-    res.status(400).json(err('You have to specify id and data'))
+    res.status(400).json(err('You have to specify id'))
   }
 
 }

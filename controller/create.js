@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
   if (data) {
     try {
 
-      const newEntry = await new entry({
+      await new entry({
         id: nanoid(),
         data
       }).save()
