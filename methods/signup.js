@@ -1,29 +1,19 @@
-const { user } = require('../model')
+const { addUser, getUser, setToken } = require('../model')
 const { ok, err } = require('../responses')
 const nanoid = require('nanoid')
 const bcrypt = require('bcrypt')
-const redis = require('../model/redis')
 
 module.exports = async (req, res) => {
   const { login, password } = req.body
 
     try {
 
-      const id = nanoid()
-      const token = nanoid()
       const hash = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS))
+      await addUser({ login, password: hash }).save()
 
-      await new user({
-        id,
-        login,
-        password: hash
-      }).save()
-
-      await redis.setAsync(token, id)
-
-      setTimeout(async () => {
-        await redis.delAsync(token)
-      }, parseInt(process.env.TOKEN_LIFETIME))
+      const { id } = await getUser({ login }).exec()
+      const token = nanoid()
+      await setToken(token, id)
 
       res.status(201).json(ok({ token }))
 

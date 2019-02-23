@@ -1,11 +1,12 @@
 const { err } = require('../responses')
-const { user } = require('../model')
+const { getUser } = require('../model')
 
 module.exports = async (req, res, next) => {
   const { login } = req.body
 
   try {
-    const response = await user.findOne({ login }).exec()
+    
+    const response = await getUser({ login }).exec()
 
     if (!response) {
       next()

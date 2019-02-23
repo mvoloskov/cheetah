@@ -1,13 +1,12 @@
-const { entry } = require('../model')
+const { addEntry } = require('../model')
 const { ok, err } = require('../responses')
-const nanoid = require('nanoid')
 
 module.exports = async (req, res) => {
-  const data = req.body.data
+  const { data } = req.body
 
   try {
 
-    await new entry({ id: nanoid(), data }).save()
+    await addEntry(data).save()
     res.status(201).json(ok())
 
   } catch (e) {

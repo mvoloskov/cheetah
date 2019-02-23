@@ -1,14 +1,12 @@
-const { user } = require('../model')
+const { getUser } = require('../model')
 const { ok, err } = require('../responses')
-
 const bcrypt = require('bcrypt')
-const redis = require('../model/redis')
 
 module.exports = async (req, res, next) => {
   const { login, password } = req.body
 
     try {
-      const response = await user.findOne({ login }).exec()
+      const response = await getUser({ login }).exec()
       const passwordIsRight = await bcrypt.compare(password, response.password)
 
       if (passwordIsRight) {

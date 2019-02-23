@@ -1,12 +1,12 @@
-const { entry, filter } = require('../model')
+const { removeEntry } = require('../model')
 const { ok, err } = require('../responses')
 
 module.exports = async (req, res) => {
-  const id = req.body.id
+  const { id } = req.body
 
   try {
 
-    await entry.findOneAndDelete({ id }).exec()
+    await removeEntry(id).exec()
     res.status(200).json(ok())
 
   } catch (e) {

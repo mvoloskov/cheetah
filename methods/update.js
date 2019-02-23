@@ -1,4 +1,4 @@
-const { entry, filter } = require('../model')
+const { updateEntry } = require('../model')
 const { ok, err } = require('../responses')
 
 module.exports = async (req, res) => {
@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 
   try {
 
-    await entry.findOneAndUpdate({ id }, { data }).exec()
+    await updateEntry(id, data).exec()
     res.status(200).json(ok())
 
   } catch (e) {
