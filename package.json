@@ -22,7 +22,7 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "mongoose": "^5.4.14",
+    "mongoose": "^5.7.5",
     "nanoid": "^2.0.1",
     "pm2": "^3.3.1",
     "redis": "^2.8.0",
