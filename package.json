@@ -15,7 +15,7 @@
     "url": "git+https://github.com/mvoloskov/cheetah.git"
   },
   "author": "Miloslav Voloskov",
-  "license": "BSL-1.0",
+  "license": "unlicense",
   "dependencies": {
     "bcrypt": "^3.0.4",
     "bluebird": "^3.5.3",
