@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uyouthe/cheetah.git"
+    "url": "git+https://github.com/mvoloskov/cheetah.git"
   },
   "author": "Miloslav Voloskov",
-  "license": "MIT",
+  "license": "BSL-1.0",
   "dependencies": {
     "bcrypt": "^3.0.4",
     "bluebird": "^3.5.3",
