@@ -17,7 +17,7 @@
   "author": "Miloslav Voloskov",
   "license": "unlicense",
   "dependencies": {
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
